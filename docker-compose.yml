@@ -8,21 +8,21 @@ services:
       POSTGRES_PASSWORD: food_order_pass
       POSTGRES_DB: food_order_db
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
   backend:
     build: ./backend
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn app.main:app --reload
     volumes:
       - ./backend:/app
     ports:
-      - "8000:8000"
+      - '8000:8000'
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgresql+asyncpg://food_order_user:food_order_pass@db:5432/food_order_db
+      DATABASE_URL: postgresql://food_order_user:food_order_pass@db:5432/food_order_db
 
 volumes:
   postgres_data:

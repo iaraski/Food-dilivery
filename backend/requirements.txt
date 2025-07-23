@@ -4,5 +4,5 @@ sqlalchemy
 asyncpg
 psycopg2-binary
 pydantic
-gunicorn
 alembic
+gunicorn
